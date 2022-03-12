@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=77fbaa4e-2b20-43f7-b93e-a86095d7714b&lang=ru_RU" type="text/javascript"></script>
+    <link rel="stylesheet" href="./style.css">
+
+    <!--Modal-->
+    <!-- Remember to include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+</head>
+<body>
+
+    <div id="ex1" class="modal">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quibusdam culpa ab reprehenderit molestiae, necessitatibus omnis excepturi distinctio laudantium laboriosam, exercitationem ratione dicta voluptatem maiores! Alias, aut. Aut, impedit neque.</p>
+
+    </div>
+
+    <section>
+
+    </section>
+
+    <section class="map_section">
+        <div class="listGroup" id="#listGroup">
+            <button id="menuController" class="buttonController">Меню</button>
+            <a href="#ex1" rel="modal:open"><button class="buttonController">О нас</button></a>
+
+
+
+            <!--Тут список-->
+        </div>
+        <div class="mapSectionBlock">
+            <div id="map" style="position:absolute; width: 99vw; height: 99vh; z-index: 0;"></div>
+        </div>
+    </section>
+
+
+    <script src="./map.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

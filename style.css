@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+.map_section{
+    width: 100%;
+    height: 98vh;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.map_section .listGroup{
+    height: 98%;
+    left: 0;
+    position: absolute;
+    width: 30%;
+    z-index: 1;
+}
+
+.map_section .mapSectionBlock{
+    height: 100%;
+    right: 0;
+    position: absolute;
+    width: 100%;
+
+}
+
+.modal{
+    font-family: 'Nunito', sans-serif;
+    max-width: 95% !important;
+}
+
+.places_tomsk{
+    width: 87%;
+    padding: 20px;
+    background: #b9deed;
+    border-radius: 5px;
+    list-style: none;
+}
+
+.places_tomsk li{
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    list-style: none;
+    font-size: 20px;
+}
+
+.main_li:hover{
+    transform: scale(1.02);
+    transition: .5s;
+    background: #e7e7e7;
+
+}
+
+.places_tomsk_sub{
+    overflow: auto;
+    max-height: 350px;
+    padding-left: 5px;
+}
+
+.places_tomsk_sub li{
+    background: #c9f7fa;
+    margin-top: 5px;
+    max-width: 85%;
+    
+}
+
+.places_tomsk_sub li:hover{
+    background: #a9f0f5;
+    transition: .5s;
+    transform: scale(1.01);
+}
+
+.buttonController{
+    padding: 5px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+    background: #b9deed;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    color: black;
+}
+
+.buttonController:hover{
+    transform: scale(1.05);
+    transition: .5s;
+}
+
+.buttonControllerA{
+    padding: 5px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+    background: #b9deed;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    color: black;
+}
+
+.buttonControllerA:hover{
+    transform: scale(1.05);
+    transition: .5s;
+}
+
+
