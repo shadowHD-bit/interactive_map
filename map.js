@@ -108,12 +108,15 @@ let placesGroup = [
             // При клике по пункту подменю открываем/закрываем баллун у метки.
             .find('a')
             .bind('click', function () {
+                myMap.setCenter(item.coordinates,15)
                 if (!placemark.balloon.isOpen()) {
                     placemark.balloon.open();
                 } else {
                     placemark.balloon.close();
                 }
                 return false;
+
+                
             });
     }
 
