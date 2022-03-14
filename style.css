@@ -21,8 +21,7 @@
     height: 100%;
     right: 0;
     position: absolute;
-    width: 100%;
-
+    width: 100%;  
 }
 
 .main_li a{
@@ -65,7 +64,6 @@
     display: flex;
     justify-content: center;
     width: 90%;
-
 }
 
 .places_tomsk_sub>li>a{
@@ -76,7 +74,6 @@
     cursor: pointer;
     height: 100%;
     padding: 10px;
-
 }
 
 .places_tomsk_sub>li>a:hover{
@@ -100,6 +97,7 @@
     transform: scale(1.05);
     transition: .5s;
 }
+
 .buttonControllerA{
     padding: 5px 20px;
     font-family: 'Nunito', sans-serif;
