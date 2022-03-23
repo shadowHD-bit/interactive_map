@@ -77,6 +77,7 @@ let placesGroup = [
  
  ymaps.ready(init);
     function init(){
+        let groukp = []
 
         var myMap = new ymaps.Map('map', {
             center: [56.474467, 84.950493],
@@ -95,7 +96,17 @@ let placesGroup = [
             groupByCoordinates: false,
             clusterDisableClickZoom: true,
             clusterHideIconOnBalloonOpen: false,
-            geoObjectHideIconOnBalloonOpen: false
+            geoObjectHideIconOnBalloonOpen: false,
+
+            clusterIconLayout: 'default#pieChart',
+            // Радиус диаграммы в пикселях.
+            clusterIconPieChartRadius: 25,
+            // Радиус центральной части макета.
+            clusterIconPieChartCoreRadius: 10,
+            // Ширина линий-разделителей секторов и внешней обводки диаграммы.
+            clusterIconPieChartStrokeWidth: 3,
+            // Определяет наличие поля balloon.
+            hasBalloon: true
         }),
 
 
@@ -103,7 +114,15 @@ let placesGroup = [
             return {
                 preset: color
             };
-        },
+        };
+
+        clusterer.options.set({
+            gridSize: 20,
+            clusterDisableClickZoom: false
+        });
+
+        clusterer.add(groukp)
+        
 
         // Контейнер для меню.
         menu = $(`<ul class="places_tomsk"></ul>`);
@@ -119,7 +138,8 @@ let placesGroup = [
             collection = new ymaps.GeoObjectCollection(null, { preset: placesGroup.style }),
         // Контейнер для подменю.
             submenu = $('<ul class="places_tomsk_sub"></ul>');
-
+            
+            
         // Добавляем коллекцию на карту.
         myMap.geoObjects.add(collection);
         
@@ -159,11 +179,12 @@ let placesGroup = [
             );
 
         // Добавляем метку в коллекцию.
-
-        clusterer.add(placemark);
-        collection.add(clusterer);
+        
+        groukp.push(placemark)
+        
+        collection.add(placemark);
         // Добавляем пункт в подменю.
- 
+        
 
 
         submenuItem
@@ -185,6 +206,7 @@ let placesGroup = [
     // Добавляем меню в тэг BODY.
     menu.appendTo($('.listGroup'));
     // Выставляем масштаб карты чтобы были видны все группы.
+
     myMap.setBounds(myMap.geoObjects.getBounds());
 }
 
