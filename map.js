@@ -90,6 +90,21 @@ let placesGroup = [
             ]
         }),
 
+        clusterer = new ymaps.Clusterer({
+            preset: 'islands#invertedVioletClusterIcons',
+            groupByCoordinates: false,
+            clusterDisableClickZoom: true,
+            clusterHideIconOnBalloonOpen: false,
+            geoObjectHideIconOnBalloonOpen: false
+        }),
+
+
+        getPointOptions = function (color) {
+            return {
+                preset: color
+            };
+        },
+
         // Контейнер для меню.
         menu = $(`<ul class="places_tomsk"></ul>`);
         
@@ -107,6 +122,7 @@ let placesGroup = [
 
         // Добавляем коллекцию на карту.
         myMap.geoObjects.add(collection);
+        
         // Добавляем подменю.
         menuItem
             .append(submenu)
@@ -124,11 +140,12 @@ let placesGroup = [
                 }
             });
         for (var j = 0, m = placesGroup.places.length; j < m; j++) {
-            createSubMenu(placesGroup.places[j], collection, submenu);
+            createSubMenu(placesGroup.places[j], collection, submenu, placesGroup);
         }
     }
 
-    function createSubMenu (item, collection, submenu) {
+
+    function createSubMenu (item, collection, submenu, group) {
         // Пункт подменю.
         var submenuItem = $('<li><a>' + item.name + '</a></li>'),
         // Создаем метку.
@@ -137,12 +154,18 @@ let placesGroup = [
                     balloonContentHeader: item.name,
                     balloonContentBody: item.info,
                     balloonContentFooter: item.adress,
-                }
+                },
+                getPointOptions(group.style)
             );
 
         // Добавляем метку в коллекцию.
-        collection.add(placemark);
+
+        clusterer.add(placemark);
+        collection.add(clusterer);
         // Добавляем пункт в подменю.
+ 
+
+
         submenuItem
             .appendTo(submenu)
             // При клике по пункту подменю открываем/закрываем баллун у метки.
