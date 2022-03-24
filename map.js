@@ -77,6 +77,7 @@ let placesGroup = [
  
  ymaps.ready(init);
     function init(){
+        let groukp = []
 
         var myMap = new ymaps.Map('map', {
             center: [56.474467, 84.950493],
@@ -89,6 +90,39 @@ let placesGroup = [
                 [56.396909, 85.165454]
             ]
         }),
+
+        clusterer = new ymaps.Clusterer({
+            preset: 'islands#invertedVioletClusterIcons',
+            groupByCoordinates: false,
+            clusterDisableClickZoom: true,
+            clusterHideIconOnBalloonOpen: false,
+            geoObjectHideIconOnBalloonOpen: false,
+
+            clusterIconLayout: 'default#pieChart',
+            // Радиус диаграммы в пикселях.
+            clusterIconPieChartRadius: 25,
+            // Радиус центральной части макета.
+            clusterIconPieChartCoreRadius: 10,
+            // Ширина линий-разделителей секторов и внешней обводки диаграммы.
+            clusterIconPieChartStrokeWidth: 3,
+            // Определяет наличие поля balloon.
+            hasBalloon: true
+        }),
+
+
+        getPointOptions = function (color) {
+            return {
+                preset: color
+            };
+        };
+
+        clusterer.options.set({
+            gridSize: 20,
+            clusterDisableClickZoom: false
+        });
+
+        clusterer.add(groukp)
+        
 
         // Контейнер для меню.
         menu = $(`<ul class="places_tomsk"></ul>`);
@@ -104,9 +138,11 @@ let placesGroup = [
             collection = new ymaps.GeoObjectCollection(null, { preset: placesGroup.style }),
         // Контейнер для подменю.
             submenu = $('<ul class="places_tomsk_sub"></ul>');
-
+            
+            
         // Добавляем коллекцию на карту.
         myMap.geoObjects.add(collection);
+        
         // Добавляем подменю.
         menuItem
             .append(submenu)
@@ -124,11 +160,12 @@ let placesGroup = [
                 }
             });
         for (var j = 0, m = placesGroup.places.length; j < m; j++) {
-            createSubMenu(placesGroup.places[j], collection, submenu);
+            createSubMenu(placesGroup.places[j], collection, submenu, placesGroup);
         }
     }
 
-    function createSubMenu (item, collection, submenu) {
+
+    function createSubMenu (item, collection, submenu, group) {
         // Пункт подменю.
         var submenuItem = $('<li><a>' + item.name + '</a></li>'),
         // Создаем метку.
@@ -137,12 +174,19 @@ let placesGroup = [
                     balloonContentHeader: item.name,
                     balloonContentBody: item.info,
                     balloonContentFooter: item.adress,
-                }
+                },
+                getPointOptions(group.style)
             );
 
         // Добавляем метку в коллекцию.
+        
+        groukp.push(placemark)
+        
         collection.add(placemark);
         // Добавляем пункт в подменю.
+        
+
+
         submenuItem
             .appendTo(submenu)
             // При клике по пункту подменю открываем/закрываем баллун у метки.
@@ -162,6 +206,7 @@ let placesGroup = [
     // Добавляем меню в тэг BODY.
     menu.appendTo($('.listGroup'));
     // Выставляем масштаб карты чтобы были видны все группы.
+
     myMap.setBounds(myMap.geoObjects.getBounds());
 }
 
