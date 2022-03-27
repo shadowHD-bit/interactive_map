@@ -228,9 +228,12 @@ let placesGroup = [
             
         // Добавляем коллекцию на карту.
         myMap.geoObjects.add(collection);
-        
+        submenu.hide();
+        myMap.geoObjects.remove(collection);
+
         // Добавляем подменю.
         menuItem
+        
             .append(submenu)
             // Добавляем пункт в меню.
             .appendTo(menu)
